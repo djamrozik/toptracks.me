@@ -3,11 +3,14 @@
 # dependencies
 /node_modules
 
-# testing
-/coverage
+# lambda function dependencies
+/lambda_functions/getTopTracks/node_modules
 
-# production
-/build
+# build
+/public/build
+
+# zip of lambda functions
+getTopTracks.zip
 
 # misc
 .DS_Store
