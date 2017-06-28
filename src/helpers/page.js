@@ -3,9 +3,9 @@ import querystring from 'querystring';
 /**
  * Go to the home screen to login
  */
-var goToLogin = function() {
+var goToHomeScreen = function() {
   window.location.href = '/';
-}
+};
 
 /**
  * Returns an object of the URL params
@@ -26,4 +26,15 @@ var blockCall = function() {
   return getParamObj() && getParamObj()['blockCall'] == 'true';
 };
 
-export {goToLogin, getParamObj, blockCall};
+/**
+ * This will return the redirect_uri used in spotify calls
+ * @return {String}         redirect_uri
+ */
+var getRedirectURI = function() {
+  if (window.location.href.indexOf('localhost') > -1) {
+    return 'http://localhost:8000/toptracks.html';
+  }
+  return 'http://toptracks.me/toptracks.html';
+}
+
+export {goToHomeScreen, getParamObj, blockCall, getRedirectURI};

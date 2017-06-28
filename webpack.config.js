@@ -5,9 +5,8 @@ const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 module.exports = {
 
   // the entry point(s) of compiling
-  // adding hot-middleware to each for hot reload
   entry: {
-    topTracksApp: './src/TopTracksApp/index.js',
+    topTracksApp: './src/TopTracksApp/index.jsx',
     login: './src/login.js'
   },
 
@@ -24,7 +23,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         loaders: ['babel-loader'],
         exclude: [nodeModulesPath]
       },

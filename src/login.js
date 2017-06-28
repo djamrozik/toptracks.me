@@ -1,29 +1,16 @@
 import querystring from 'querystring';
-
-/**
- * Generate a random string with a given length
- * Using from Spotify's authentication demo
- * @param  {Number} length number of chars
- * @return {String} A random string
- */
-function generateRandomString(length) {
-  var text = '';
-  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  for (var i = 0; i < length; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  return text;
-};
+import {generateRandomString} from './helpers/strings.js';
+import {getRedirectURI} from './helpers/page.js';
 
 /**
  * Redirects to the Spotify login URL with given query params. Also generates a
  * new random state which can be used for cookies later
  * @return null
  */
-function goToLogin() {
+function goToSpotifyLogin() {
   var scope = 'user-read-private user-read-email user-read-recently-played user-top-read';
   var client_id = 'f7dcd38e4e8e41698722f35a812618fd';
-  var redirect_uri = 'http://localhost:8000/toptracks.html';
+  var redirect_uri = getRedirectURI();
   var state = generateRandomString(16);
 
   var queryVals = querystring.stringify({
@@ -39,4 +26,4 @@ function goToLogin() {
   window.location.href = loginURL;
 };
 
-goToLogin();
+goToSpotifyLogin();

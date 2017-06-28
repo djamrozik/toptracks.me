@@ -11,6 +11,7 @@
     "watch": "webpack --config webpack.config.js --progress --colors --watch",
     "lambda": "cd lambda_functions/getTopTracks && zip -r getTopTracks.zip * && aws lambda update-function-code --function-name getTopTracks --zip-file fileb://getTopTracks.zip",
     "server": "cd public && python -m SimpleHTTPServer",
+    "upload": "aws s3 sync ./public s3://toptracks.me",
     "clean": "rm -f lambda_functions/getTopTracks/getTopTracks.zip && rm -f npm-debug.log"
   },
   "devDependencies": {

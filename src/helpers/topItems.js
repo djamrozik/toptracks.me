@@ -1,5 +1,6 @@
 import $ from "jquery";
 import {getParamObj, blockCall} from './page.js'
+import {getRedirectURI} from './page.js';
 
 /**
  * Makes the call to the lambda function which authenticates (using the client secret)
@@ -15,9 +16,13 @@ var getAllTopItems = function(callback) {
     return callback();
   }
 
+  // set the params
+  const params = getParamObj();
+  params['redirect_uri'] = getRedirectURI();
+
   $.ajax({
     url: request_url,
-    data: getParamObj(),
+    data: params,
     beforeSend: function(xhr){xhr.setRequestHeader('Access-Control-Allow-Origin', 'true')},
     success: function(data) {
       if (data.errorMessage) {

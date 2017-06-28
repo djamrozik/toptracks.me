@@ -9,6 +9,7 @@ body, html {
 .header {
   font-size: 1.4rem;
   letter-spacing: 2px;
+  padding-left: 12px;
 }
 
 .loading-screen {
@@ -38,19 +39,60 @@ body, html {
   align-items: center;
   justify-content: center;
   min-height: 60px;
-  letter-spacing: .8px;
+  letter-spacing: 1.5px;
   font-size: 1.2rem;
   border-bottom: 3px solid #666;
   cursor: pointer;
+  text-align: center;
 }
 
 .select-term-tab-selected {
   border-bottom: 3px solid #ccc;
 }
 
+.top-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px solid #999;
+}
+
+.top-item-image {
+  width: 60px;
+  height: 60px;
+}
+
+.top-item-rank {
+  padding: 0 25px;
+}
+
+.top-item-data {
+  padding-left: 15px;
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.top-item-play {
+  flex-grow: 1;
+  text-align: right;
+  padding-right: 40px;
+}
+
+.top-item-play-icon {
+  color: #aaa;
+  cursor: pointer;
+}
+
+.top-item-play-icon:hover {
+  color: #fff;
+}
+
 .top-items-page {
   position: relative;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   background-color: #222;
   color: white;
@@ -68,6 +110,32 @@ body, html {
 }
 
 .top-tracks {
-  padding: 4px 12px;
+  padding: 6px 0;
   border-bottom: 1px solid #ccc;
+}
+
+.track-artist, .artist-genre {
+  font-size: .95rem;
+  font-weight: 300;
+}
+
+.track-name, .artist-name {
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  padding-bottom: .5rem;
+}
+
+/* anything less than 520px */
+@media screen and (max-width: 519px) {
+  .header {
+    text-align: center;
+  }
+
+  .top-item-rank {
+    padding: 1rem;
+  }
+
+  .top-item-play {
+    padding-right: 1.75rem;
+  }
 }

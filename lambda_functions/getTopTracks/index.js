@@ -2,7 +2,6 @@ const request = require('request');
 const async = require('async');
 
 const client_id = 'f7dcd38e4e8e41698722f35a812618fd';
-const redirect_uri = 'http://localhost:8000/toptracks.html';
 
 var getTopItems = function(accessToken, type, timeRange, callback) {
   const limit = 50;
@@ -23,6 +22,7 @@ var getTopItems = function(accessToken, type, timeRange, callback) {
 
 exports.handler = (event, context, callback) => {
   const code = event.code;
+  const redirect_uri = event.redirect_uri;
 
   if (!code) {
     return callback('No authorization code provided, redirect.');
