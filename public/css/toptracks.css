@@ -61,10 +61,13 @@ body, html {
 .top-item-image {
   width: 60px;
   height: 60px;
+  flex-basis: 60px;
 }
 
 .top-item-rank {
-  padding: 0 25px;
+  flex-basis: 4rem;
+  flex-shrink: 0;
+  text-align: center;
 }
 
 .top-item-data {
@@ -106,12 +109,12 @@ body, html {
 }
 
 .top-artists {
-  padding: 4px 12px;
+
 }
 
 .top-tracks {
   padding: 6px 0;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ddd;
 }
 
 .track-artist, .artist-genre {
@@ -129,13 +132,14 @@ body, html {
 @media screen and (max-width: 519px) {
   .header {
     text-align: center;
+    padding-left: 0;
   }
 
   .top-item-rank {
-    padding: 1rem;
+    flex-basis: 2.25rem;
   }
 
   .top-item-play {
-    padding-right: 1.75rem;
+    padding-right: 1rem;
   }
 }
