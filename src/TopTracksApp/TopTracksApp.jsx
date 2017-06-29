@@ -41,7 +41,7 @@ class TopTracksApp extends Component {
     return (
       <div className="loading-screen">
         <div className="loading-module">
-          <img src="/images/loader_animal.gif"/>
+          <img src="/images/loader_animal_white.gif"/>
           Loading data...
         </div>
       </div>
@@ -139,14 +139,16 @@ class TopTracksApp extends Component {
       return "N/A";
     }
 
-    if (genres.length > 3) {
-      genres = genres.splice(0, 4);
-      genres.push('...')
-    }
-
+    // capitalize each genre (looks better)
     genres = genres.map(function(genre) {
       return capitalize(genre)
     });
+
+    // limit to four items
+    if (genres.length > 3) {
+      genres = genres.splice(0, 4);
+      return genres.join(', ') + ' ...';
+    }
 
     return genres.join(', ');
   }

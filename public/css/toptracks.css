@@ -17,7 +17,7 @@ body, html {
   align-items: center;
   justify-content: center;
   max-width: 960px;
-  background-color: #333;
+  background-color: #ffffff;
   margin: 0 auto;
   min-height: 100vh;
 }
@@ -41,13 +41,13 @@ body, html {
   min-height: 60px;
   letter-spacing: 1.5px;
   font-size: 1.2rem;
-  border-bottom: 3px solid #666;
+  border-bottom: 3px solid #ccc;
   cursor: pointer;
   text-align: center;
 }
 
 .select-term-tab-selected {
-  border-bottom: 3px solid #ccc;
+  border-bottom: 3px solid #666;
 }
 
 .top-item {
@@ -62,6 +62,7 @@ body, html {
   width: 60px;
   height: 60px;
   flex-basis: 60px;
+  flex-shrink: 0;
 }
 
 .top-item-rank {
@@ -85,31 +86,27 @@ body, html {
 }
 
 .top-item-play-icon {
-  color: #aaa;
+  color: #444;
   cursor: pointer;
 }
 
 .top-item-play-icon:hover {
-  color: #fff;
+  color: #888;
 }
 
 .top-items-page {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background-color: #222;
-  color: white;
+  background-color: white;
+  color: #111;
 }
 
 .top-items-screen {
   margin: 0 auto;
   max-width: 960px;
-  background-color: #333;
+  background-color: #ffffff;
   min-height: 100vh;
-}
-
-.top-artists {
-
 }
 
 .top-tracks {
