@@ -76,6 +76,15 @@ class TopTracksApp extends Component {
             {this.renderTopItems('artists')}
           </div>
         </div>
+        <div className="top-items-footer">
+          <span className="copyright">
+            &copy; TopTracks.me
+          </span>
+          &bull;
+          <span className="about-link">
+            <a href="/about.html">About</a>
+          </span>
+        </div>
       </div>
     )
   };
