@@ -8,8 +8,9 @@ class TopTracksApp extends Component {
   constructor (props) {
     super(props);
     this.state = {
+      itemType: 'artists',
       showSpinner: true,
-      selectedTerm: 'short'
+      timeRange: 'short'
     };
   };
 
@@ -49,32 +50,26 @@ class TopTracksApp extends Component {
   };
 
   renderTopTracksScreen() {
-    const class_short_term = this.state.selectedTerm == 'short' ? "select-term-tab-selected" : "";
-    const class_medium_term = this.state.selectedTerm == 'medium' ? "select-term-tab-selected" : "";
-    const class_long_term = this.state.selectedTerm == 'long' ? "select-term-tab-selected" : "";
 
     return (
       <div className="top-items-screen">
-        <div className="select-term-tabs">
-          <div className={`select-term-tab ${class_short_term}`} onClick={() => this.handleTermChange('short')}>
-            <span>SHORT TERM</span>
+        <div className="top-items-header">
+          <div className="dropdown-wrapper time-range-dropdown">
+            <select value={this.state.timeRange} onChange={this.handleTimeRangeChange.bind(this)}>
+              <option value="short">Short Term (4 weeks)</option>
+              <option value="medium">Medium Term (6 months)</option>
+              <option value="long">Long Term (Years)</option>
+            </select>
           </div>
-          <div className={`select-term-tab ${class_medium_term}`} onClick={() => this.handleTermChange('medium')}>
-            <span>MEDIUM TERM</span>
-          </div>
-          <div className={`select-term-tab ${class_long_term}`} onClick={() => this.handleTermChange('long')}>
-            <span>LONG TERM</span>
+          <div className="dropdown-wrapper item-type-dropdown">
+            <select value={this.state.itemType} onChange={this.handleItemTypeChange.bind(this)}>
+              <option value="artists">Artists</option>
+              <option value="tracks">Tracks</option>
+            </select>
           </div>
         </div>
         <div className="top-items-body">
-          <div className="top-tracks">
-            <p className="header">TOP TRACKS</p>
-            {this.renderTopItems('tracks')}
-          </div>
-          <div className="top-artists">
-            <p className="header">TOP ARTISTS</p>
-            {this.renderTopItems('artists')}
-          </div>
+          {this.renderTopItems(this.state.itemType)}
         </div>
         <div className="top-items-footer">
           <span className="copyright">
@@ -95,12 +90,15 @@ class TopTracksApp extends Component {
       return null;
     }
 
-    var term = this.state.selectedTerm;
+    var term = this.state.timeRange;
     var topItemsCategory = type + capitalize(term) + 'Term';
     var topItemsInCategory = this.state.topItems[topItemsCategory]['items']
 
     return (
       <div className="top-items">
+        <div className="type-header header-center">
+          {`Top ${capitalize(type)}`}
+        </div>
         {topItemsInCategory.map(function(object, i){
           return (
             <div className="top-item" key={i}>
@@ -178,9 +176,15 @@ class TopTracksApp extends Component {
     return "";
   }
 
-  handleTermChange(newTerm) {
+  handleItemTypeChange(event) {
     this.setState({
-      selectedTerm: newTerm
+      itemType: event.target.value
+    })
+  }
+
+  handleTimeRangeChange(event) {
+    this.setState({
+      timeRange: event.target.value
     })
   }
 
