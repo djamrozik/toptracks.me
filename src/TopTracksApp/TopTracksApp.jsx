@@ -54,17 +54,21 @@ class TopTracksApp extends Component {
       <div className="top-items-screen">
         <div className="top-items-header">
           <div className="dropdown-wrapper time-range-dropdown">
+            {/* <span className="select-blank-space"></span> */}
             <select value={this.state.timeRange} onChange={this.handleTimeRangeChange.bind(this)}>
               <option value="short">Short Term (4 weeks)</option>
               <option value="medium">Medium Term (6 months)</option>
               <option value="long">Long Term (Years)</option>
             </select>
+            {/* <span className="select-blank-space"></span> */}
           </div>
           <div className="dropdown-wrapper item-type-dropdown">
+            {/* <span className="select-blank-space"></span> */}
             <select value={this.state.itemType} onChange={this.handleItemTypeChange.bind(this)}>
               <option value="artists">Artists</option>
               <option value="tracks">Tracks</option>
             </select>
+            {/* <span className="select-blank-space"></span> */}
           </div>
         </div>
         <div className="top-items-body">
@@ -225,9 +229,15 @@ class TopTracksApp extends Component {
 
   playItem(object) {
     if (object.type === "artist") {
+      if (ga) {
+        ga('send', 'event', 'Link Click', 'Spotify Song Play', 'Artist');
+      }
       window.open(object.external_urls.spotify,'_blank');
     }
     if (object.type === "track") {
+      if (ga) {
+        ga('send', 'event', 'Link Click', 'Spotify Song Play', 'Track');
+      }
       window.open(object.external_urls.spotify,'_blank');
     }
   }
