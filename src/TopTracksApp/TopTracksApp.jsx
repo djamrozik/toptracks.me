@@ -50,7 +50,6 @@ class TopTracksApp extends Component {
   };
 
   renderTopTracksScreen() {
-
     return (
       <div className="top-items-screen">
         <div className="top-items-header">
@@ -71,9 +70,16 @@ class TopTracksApp extends Component {
         <div className="top-items-body">
           {this.renderTopItems(this.state.itemType)}
         </div>
+        <div className="top-items-sponsored">
+          {this.renderSponsored()}
+        </div>
         <div className="top-items-footer">
           <span className="copyright">
             &copy; TopTracks.me
+          </span>
+          &bull;
+          <span className="affiliate-info">
+            TopTracks is an Amazon Affiliate site
           </span>
           &bull;
           <span className="about-link">
@@ -83,6 +89,35 @@ class TopTracksApp extends Component {
       </div>
     )
   };
+
+  renderSponsored() {
+    const MIN_ITEMS = 12;
+    const topItems = this && this.state && this.state.topItems;
+
+    // only render this part once the data exists, and min number
+    if (!topItems || topItems.length < MIN_ITEMS) {
+      return null;
+    }
+
+    const term = this.state.timeRange;
+    const topItemsCategory = this.state.itemType + capitalize(term) + 'Term';
+    const topItemsInCategory = topItems[topItemsCategory]['items']
+    const topItem = topItemsInCategory[0];
+
+    const artistName = topItem.type === "artist" ? topItem.name : topItem.artists[0].name;
+    const encodedArtistName = encodeURIComponent(artistName)
+    const amazonLink = `https://www.amazon.com/s/ref=as_li_ss_tl?url=search-alias=aps&field-keywords=${encodedArtistName}&linkCode=ll2&tag=dealgira-20&linkId=1f0fe755e53f6cf3926888f4d290cf38`;
+
+    return (
+      <div className="sponsored-item">
+        <span className="sponsored-label">Sponsored</span>
+        <span className="sponsored-info">
+          Find <span className="sponsored-item-artist">{artistName}</span> merch on Amazon by clicking
+          <a href={amazonLink}> here.</a>
+        </span>
+      </div>
+    );
+  }
 
   renderTopItems(type) {
     // only render this part once the data exists
@@ -142,10 +177,6 @@ class TopTracksApp extends Component {
   getGenres(artist) {
     let genres = artist.genres;
 
-    if (!genres) {
-      return "N/A";
-    }
-
     // capitalize each genre (looks better)
     genres = genres.map(function(genre) {
       return capitalize(genre)
@@ -155,6 +186,10 @@ class TopTracksApp extends Component {
     if (genres.length > 3) {
       genres = genres.splice(0, 4);
       return genres.join(', ') + ' ...';
+    }
+
+    if (!genres || genres.length === 0 || (genres.length === 1 && genres[0] === "")) {
+      return '(none given)';
     }
 
     return genres.join(', ');

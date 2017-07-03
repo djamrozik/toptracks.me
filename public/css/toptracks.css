@@ -56,6 +56,28 @@ a {
   align-items: center;
 }
 
+.sponsored-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px solid #000;
+  align-items: center;
+}
+
+.sponsored-item .sponsored-info {
+  padding-top: 12px;
+  font-size: .9rem;
+}
+
+.sponsored-item .sponsored-item-artist {
+  font-weight: bold;
+}
+
+.sponsored-item .sponsored-label {
+  font-weight: bold;
+}
+
 .top-item {
   display: flex;
   flex-direction: row;
@@ -72,6 +94,7 @@ a {
   height: 60px;
   flex-basis: 60px;
   flex-shrink: 0;
+  border-radius: 5px;
 }
 
 .top-item-rank {
@@ -105,6 +128,7 @@ a {
 
 .top-items .type-header {
   font-size: 1.0rem;
+  letter-spacing: 1.2px;
 }
 
 .top-items-body {
@@ -118,16 +142,23 @@ a {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  font-size: .7em;
   border-top: 1px solid #999;
-  font-size: .9em;
 }
 
 .top-items-footer .about-link {
   padding-left: 10px;
+  text-align: center;
+}
+
+.top-items-footer .affiliate-info {
+  padding: 0 8px;
+  text-align: center;
 }
 
 .top-items-footer .copyright {
   padding-right: 10px;
+  text-align: center;
 }
 
 .top-items-header {
@@ -151,7 +182,9 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 1.5rem;
+  padding: 0;
+  background: rgb(248, 248, 248);
+  background-color: rgb(248, 248, 248);
 }
 
 .top-items-header .dropdown-wrapper select {
@@ -161,6 +194,8 @@ a {
   font-weight: bold;
   border: none;
   outline: none;
+  border-left: 8px solid rgb(248, 248, 248);
+  border-right: 8px solid rgb(248, 248, 248);
 }
 
 .top-items-header .time-range-dropdown {
@@ -195,8 +230,9 @@ a {
 
 .track-name, .artist-name {
   font-size: 1.1rem;
-  letter-spacing: 1px;
+  letter-spacing: 1.6px;
   padding-bottom: .5rem;
+  font-weight: bold;
 }
 
 
@@ -222,12 +258,10 @@ a {
     font-size: 1rem;
   }
 
-  .top-items-header .dropdown-wrapper {
-    padding: 0 .5rem;
-  }
-  
   .top-items-header .dropdown-wrapper select {
     font-size: .75rem;
+    border-left: 4px solid rgb(248, 248, 248);
+    border-right: 4px solid rgb(248, 248, 248);
   }
 
   .top-item-rank {
@@ -236,6 +270,14 @@ a {
 
   .top-item-play {
     padding-right: 1rem;
+  }
+
+  .track-name, .artist-name {
+    letter-spacing: 1.3px;
+  }
+
+  .type-header {
+    margin-top: 6px;
   }
 }
 
