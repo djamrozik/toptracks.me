@@ -54,21 +54,17 @@ class TopTracksApp extends Component {
       <div className="top-items-screen">
         <div className="top-items-header">
           <div className="dropdown-wrapper time-range-dropdown">
-            {/* <span className="select-blank-space"></span> */}
             <select value={this.state.timeRange} onChange={this.handleTimeRangeChange.bind(this)}>
               <option value="short">Short Term (4 weeks)</option>
               <option value="medium">Medium Term (6 months)</option>
               <option value="long">Long Term (Years)</option>
             </select>
-            {/* <span className="select-blank-space"></span> */}
           </div>
           <div className="dropdown-wrapper item-type-dropdown">
-            {/* <span className="select-blank-space"></span> */}
             <select value={this.state.itemType} onChange={this.handleItemTypeChange.bind(this)}>
               <option value="artists">Artists</option>
               <option value="tracks">Tracks</option>
             </select>
-            {/* <span className="select-blank-space"></span> */}
           </div>
         </div>
         <div className="top-items-body">
@@ -87,7 +83,7 @@ class TopTracksApp extends Component {
           </span>
           &bull;
           <span className="about-link">
-            <a href="/about.html">About</a>
+            <a href="/about.html" id="about-link-text">About</a>
           </span>
         </div>
       </div>
@@ -117,7 +113,7 @@ class TopTracksApp extends Component {
         <span className="sponsored-label">Sponsored</span>
         <span className="sponsored-info">
           Find <span className="sponsored-item-artist">{artistName}</span> merch on Amazon by clicking
-          <a href={amazonLink}> here.</a>
+          <a href={`http://www.amazon.com` || amazonLink} id="amazon-link-text"> here.</a>
         </span>
       </div>
     );
@@ -145,7 +141,7 @@ class TopTracksApp extends Component {
               <img className="top-item-image" src={this.getImageURL(object)} />
               {object.type === "track" ? this.renderTrack(object) : this.renderArtist(object)}
               <span className="top-item-play">
-                <i className="fa fa-play-circle fa-2x top-item-play-icon" aria-hidden="true" onClick={() => this.playItem(object)}></i>
+                <i className="fa fa-play-circle fa-2x top-item-play-icon" id="play-button-icon" aria-hidden="true" onClick={() => this.playItem(object)}></i>
               </span>
             </div>
           )
@@ -229,15 +225,9 @@ class TopTracksApp extends Component {
 
   playItem(object) {
     if (object.type === "artist") {
-      if (ga) {
-        ga('send', 'event', 'Link Click', 'Spotify Song Play', 'Artist');
-      }
       window.open(object.external_urls.spotify,'_blank');
     }
     if (object.type === "track") {
-      if (ga) {
-        ga('send', 'event', 'Link Click', 'Spotify Song Play', 'Track');
-      }
       window.open(object.external_urls.spotify,'_blank');
     }
   }
