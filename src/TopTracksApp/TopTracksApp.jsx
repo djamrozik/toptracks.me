@@ -113,7 +113,7 @@ class TopTracksApp extends Component {
         <span className="sponsored-label">Sponsored</span>
         <span className="sponsored-info">
           Find <span className="sponsored-item-artist">{artistName}</span> merch on Amazon by clicking
-          <a href={`http://www.amazon.com` || amazonLink} id="amazon-link-text"> here.</a>
+          <a href={amazonLink} id="amazon-link-text"> here.</a>
         </span>
       </div>
     );
