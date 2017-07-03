@@ -57,7 +57,7 @@ class TopTracksApp extends Component {
             <select value={this.state.timeRange} onChange={this.handleTimeRangeChange.bind(this)}>
               <option value="short">Short Term (4 weeks)</option>
               <option value="medium">Medium Term (6 months)</option>
-              <option value="long">Long Term (Years)</option>
+              <option value="long">Long Term (years)</option>
             </select>
           </div>
           <div className="dropdown-wrapper item-type-dropdown">
