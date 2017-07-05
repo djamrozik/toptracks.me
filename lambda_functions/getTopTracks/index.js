@@ -1,6 +1,7 @@
 const request = require('request');
 const async = require('async');
 
+// this can be public
 const client_id = 'f7dcd38e4e8e41698722f35a812618fd';
 
 var getTopItems = function(accessToken, type, timeRange, callback) {

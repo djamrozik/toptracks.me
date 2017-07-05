@@ -8,8 +8,8 @@ import {getRedirectURI} from './helpers/page.js';
  * @return null
  */
 function goToSpotifyLogin() {
-  var scope = 'user-read-private user-read-email user-read-recently-played user-top-read';
-  var client_id = 'f7dcd38e4e8e41698722f35a812618fd';
+  var scope = 'user-top-read';
+  var client_id = 'f7dcd38e4e8e41698722f35a812618fd'; // can be public
   var redirect_uri = getRedirectURI();
   var state = generateRandomString(16);
 
