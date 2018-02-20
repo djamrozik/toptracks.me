@@ -70,10 +70,10 @@ class TopTracksApp extends Component {
         <div className="top-items-body">
           {this.renderTopItems(this.state.itemType)}
         </div>
-        <div className="top-items-sponsored">
+        {/* <div className="top-items-sponsored">
           {this.renderSponsored()}
-        </div>
-        <div className="top-items-footer">
+        </div> */}
+        {/* <div className="top-items-footer">
           <span className="copyright">
             &copy; TopTracks.me
           </span>
@@ -85,7 +85,7 @@ class TopTracksApp extends Component {
           <span className="about-link">
             <a href="/about.html" id="about-link-text">About</a>
           </span>
-        </div>
+        </div> */}
       </div>
     )
   };
